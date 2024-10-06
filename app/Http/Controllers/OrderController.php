@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index()
-{
-    $categories = \App\Models\Kategori::with('menu')->get();
+    {
+        $categories = \App\Models\Kategori::with('menu')->get();
 
-    return view('order.index', compact('categories'));
-}
+        return view('order.index', compact('categories'));
+    }
 
 }

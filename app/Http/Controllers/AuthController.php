@@ -68,24 +68,51 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function profileUpdate(Request $request)
+    public function update(Request $request)
     {
         $user = Auth::user();
 
         Validator::make($request->all(), [
             'mobile' => 'nullable|string',
             'address' => 'nullable|string',
-            'role' => 'required|in:Admin,User', // Validasi untuk role
+            'role' => 'required|in:Admin,User',
+			'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ])->validate();
 
+		if ($request->hasFile('profile_photo')) {
+			$image = $request->file('profile_photo');
+			$imageName = time() . '.' . $image->getClientOriginalExtension();
+			$image->move(public_path('images/profile'), $imageName);
+	
+			if ($user->profile_photo && file_exists(public_path('images/profile/' . $user->profile_photo))) {
+				unlink(public_path('images/profile/' . $user->profile_photo));
+			}
+	
+			$user->profile_photo = $imageName;
+		}
+
         $user->update([
-            'mobile' => $request->mobile, // Update nomor telepon
-            'address' => $request->address, // Update alamat
-            'level' => $request->role, // Update role
+            'mobile' => $request->mobile, 
+            'address' => $request->address, 
+            'level' => $request->role,
         ]);
 
         return redirect()->route('profile')->with('success', 'Profile updated successfully');
     }
+
+	public function delete()
+	{
+    	$user = Auth::user();
+
+    	if ($user->profile_photo) {
+        	Storage::delete('images/profile/' . $user->profile_photo);
+
+        	$user->profile_photo = null;
+        	$user->save();
+    	}
+
+    	return redirect()->back()->with('success', 'Foto profil berhasil dihapus.');
+	}
 
     public function profile()
     {

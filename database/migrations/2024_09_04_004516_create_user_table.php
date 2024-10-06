@@ -22,6 +22,7 @@ return new class extends Migration
 			$table->string('mobile')->nullable();
             $table->string('address')->nullable();
 			$table->foreignId('id_membership')->nullable()->constrained('membership')->onDelete('cascade');
+			$table->foreignId('id_review')->nullable()->constrained('review')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
@@ -36,6 +37,8 @@ return new class extends Migration
 		Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['id_membership']);
             $table->dropColumn('id_membership');
+			$table->dropForeign(['id_review']);
+            $table->dropColumn('id_review');
         });
 	}
 };

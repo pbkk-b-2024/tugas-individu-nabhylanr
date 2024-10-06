@@ -5,22 +5,18 @@
 @section('contents')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <!-- Mengubah warna teks "Data Menu" -->
         <h6 class="m-0 font-weight-bold" style="color: #1F3933;">Data Menu</h6>
     </div>
     <div class="card-body">
         <div class="row mb-3">
             @if (auth()->user()->level == 'Admin')
-            <!-- Mengubah warna tombol "Tambah Menu" -->
             <a href="{{ route('menu.tambah') }}" class="btn" style="background-color: #1F3933; color: #FFFFFF;">Tambah Menu</a>
             @endif
 
-            <!-- Topbar Search -->
             <form action="{{ route('menu.search') }}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" value="{{ request('search') }}" style="color: #1F3933;">
                     <div class="input-group-append">
-                        <!-- Mengubah warna tombol pencarian menjadi hijau 1F3933 -->
                         <button class="btn" type="submit" style="background-color: #1F3933; color: #FFFFFF;">
                             <i class="fas fa-search fa-sm"></i>
                         </button>
@@ -29,7 +25,6 @@
             </form>
 
             <div class="col-md-4 text-right">
-                <!-- Back to Items Button -->
                 <a href="{{ route('menu') }}" class="btn btn-secondary">Data Menu</a>
             </div>
         </div>

@@ -160,7 +160,7 @@
                       <br>
                       <small>{{ auth()->user()->level }}</small>
                   </span>
-          <img class="img-profile rounded-circle" src="img/profile.PNG">
+                  <img class="img-profile rounded-circle" src="{{ auth()->user()->profile_photo ? asset('images/profile/' . auth()->user()->profile_photo) : asset('images/profile/default.png') }}">
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -46,6 +46,12 @@
         <i class="fas fa-id-card"></i>
         <span>Membership</span></a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('review') }}">
+        <i class="fas fa-star"></i>
+        <span>Review</span></a>
+    </li>
   
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

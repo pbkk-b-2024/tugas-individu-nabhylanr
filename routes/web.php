@@ -5,6 +5,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->group(function () {
@@ -58,9 +59,19 @@ Route::middleware('auth')->group(function () {
 		Route::get('hapus/{id}', 'hapus')->name('membership.hapus');
 	});
 
+	Route::controller(ReviewController::class)->prefix('review')->group(function () {
+		Route::get('', 'index')->name('review');
+		Route::get('tambah', 'tambah')->name('review.tambah');
+		Route::post('tambah', 'simpan')->name('review.tambah.simpan');
+		Route::get('hapus/{id}', 'hapus')->name('review.hapus');
+	});
+
 	Route::get('/kategori/cari', [KategoriController::class, 'search'])->name('kategori.search');
 	
-	Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
-	Route::post('/profile/update', [AuthController::class, 'profileUpdate'])->name('profile.update');
+	Route::controller(AuthController::class)->prefix('profile')->group(function () {
+		Route::get('', 'profile')->name('profile');
+		Route::post('update', 'update')->name('profile.update');
+		Route::delete('delete', 'delete')->name('profile.delete');
+	});
 });
 
