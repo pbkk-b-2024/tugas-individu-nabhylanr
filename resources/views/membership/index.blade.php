@@ -8,7 +8,6 @@
 use Carbon\Carbon;
 @endphp
 
-<div class="container mt-5">
     @if(!$membership)
     <div class="alert alert-warning" role="alert">
         <h4 class="alert-heading">Kamu belum join membership</h4>
@@ -17,9 +16,8 @@ use Carbon\Carbon;
     </div>
     
     @else
-    <div class="card shadow mb-4" style="border-radius: 15px;">
-        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: #1F3933; color: #FFFFFF; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-            <h5 class="m-0 font-weight-bold">Membership Card</h5>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
             <a href="{{ route('membership.hapus', $membership->id) }}" class="btn btn-danger btn-sm">Batalkan Membership</a>
         </div>
         <div class="card-body text-center">
@@ -36,6 +34,5 @@ use Carbon\Carbon;
         </div>
     </div>
     @endif
-</div>
 
 @endsection

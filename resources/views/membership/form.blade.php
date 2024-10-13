@@ -3,11 +3,10 @@
 @section('title', 'Join Membership')
 
 @section('contents')
-<div class="container mt-5">
-    <div class="card shadow mb-4" style="border-radius: 15px;">
-        <div class="card-header py-3" style="background-color: #1F3933; color: #FFFFFF; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-            <h5 class="m-0 font-weight-bold">Join Membership</h5>
-        </div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold" style="color: #1F3933;">Add Membership</h6>
+    </div>    
         <div class="card-body">
             <form action="{{ route('membership.tambah') }}" method="POST">
                 @csrf
@@ -23,6 +22,5 @@
                 <a href="{{ route('membership') }}" class="btn btn-secondary">Batal</a>
             </form>
         </div>
-    </div>
 </div>
 @endsection

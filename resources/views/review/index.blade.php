@@ -3,16 +3,11 @@
 @section('title', 'All Reviews')
 
 @section('contents')
-<div class="container mt-4">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <div class="mb-3">
-                <a href="{{ route('review.tambah') }}" class="btn btn-primary" style="background-color: #1F3933; color: #FFFFFF;">Tambah Review</a>
-            </div>        
-        </div>
-        <div class="card-body">
-            
-
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <a href="{{ route('review.tambah') }}" class="btn btn-primary" style="background-color: #1F3933; color: #FFFFFF;">Tambah Review</a>
+    </div>
+    <div class="card-body">
         @if($reviews && $reviews->count() > 0)
                 @foreach($reviews as $review)
                 <div class="col-lg-8 mb-4 review-item d-flex align-items-center card-container">
@@ -38,9 +33,7 @@
                 @endforeach
             @else
                 <p>No reviews found.</p>
-                <a href="{{ route('review.tambah') }}" class="btn" style="background-color: #1F3933; color: #FFFFFF;">Add Review</a>
             @endif
-        </div>
     </div>
 </div>
 @endsection

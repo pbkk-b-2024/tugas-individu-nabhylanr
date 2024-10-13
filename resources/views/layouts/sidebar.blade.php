@@ -42,6 +42,28 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link" href="{{ route('cart') }}">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Cart</span></a>
+    </li>
+
+    @if (auth()->user()->level == 'Admin')
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('discount') }}">
+        <i class="fas fa-percent"></i>
+        <span>Discount</span></a>
+    </li>
+    @endif
+
+    @if (auth()->user()->level == 'Admin')
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('payment') }}">
+        <i class="fas fa-wallet"></i>
+        <span>Payment</span></a>
+    </li>
+    @endif
+
+    <li class="nav-item">
       <a class="nav-link" href="{{ route('membership') }}">
         <i class="fas fa-id-card"></i>
         <span>Membership</span></a>
@@ -52,7 +74,15 @@
         <i class="fas fa-star"></i>
         <span>Review</span></a>
     </li>
-  
+
+    @if (auth()->user()->level == 'Admin')
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('outlets') }}">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Outlet</span></a>
+    </li>
+    @endif
+    
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
   

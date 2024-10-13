@@ -14,7 +14,6 @@ class KategoriController extends Controller
 		return view('kategori.index', ['kategori' => $kategori]);
 	}
 	
-
 	public function tambah()
 	{
 		return view('kategori.form');

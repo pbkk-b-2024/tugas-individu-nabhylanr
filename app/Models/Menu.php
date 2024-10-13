@@ -11,7 +11,13 @@ class Menu extends Model
 
 	protected $table = 'menu';
 
-	protected $fillable = ['kode_menu', 'nama_menu', 'id_kategori', 'harga', 'jumlah'];
+	protected $fillable = [
+        'kode_menu', 
+        'nama_menu', 
+        'id_kategori', 
+        'harga', 
+        'jumlah'
+    ];
 
 	public function kategori()
 	{
